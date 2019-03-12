@@ -71,7 +71,13 @@ const getBookClubListSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved List of Book Clubs!')
   $('form').trigger('reset')
-  $('#show-book-club-list').text(data.book_clubs[0].name)
+  // $('#show-book-club-list').text(data.book_clubs[7].author)
+  const finalList = []
+  for (let i = 0; i < data.book_clubs.length; i++) {
+    const oneClub = data.book_clubs[i].name
+    finalList.push(' ' + oneClub)
+  }
+  $('#show-book-club-list').text(finalList)
   console.log(data.book_clubs)
 }
 
