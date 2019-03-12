@@ -12,6 +12,40 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Hi</h1>
+      <p id="user-message"></p>
+        <form id="sign-up-form">
+          <input name="credentials[email]" type="email" placeholder="email">
+          <input name="credentials[password]" type="password" placeholder="password">
+          <input name="credentials[password_confirmation]" type="password" placeholder="password confirmation">
+          <input type="submit" value="Sign Up">
+        </form>
+
+        <form id="sign-in-form">
+          <input name="credentials[email]" type="email" placeholder="email">
+          <input name="credentials[password]" type="password" placeholder="password">
+          <input type="submit" value="Sign In">
+        </form>
+
+        <form id="change-password-form">
+          <input name="passwords[old]" type="password" placeholder="old password">
+          <input name="passwords[new]" type="password" placeholder="new password">
+          <input type="submit" value="Change Password">
+        </form>
+
+        <form id="sign-out-form">
+          <input type="submit" value="Sign Out">
+        </form>
+        <p>
+          <form id="create-book-club-form">
+            <input name="book_club[name]" type="text" placeholder="Book Club Name">
+            <input name="book_club[user_id]" type="text" placeholder="Book Club Admin">
+            <input type="submit" value="Create New Book Club">
+          </form>
+          <form id="get-book-club-list-form">
+            <input type="submit" value="Get Book Clubs List">
+          </form>
+        </p>
+        <p id="show-book-club-list">hi</p>
     </body>
 </html>
