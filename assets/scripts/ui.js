@@ -71,8 +71,8 @@ const getBookClubListSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved List of Book Clubs!')
   $('form').trigger('reset')
-  // $('#show-book-club-list').text(data.book_clubs[0].name)
-  // console.log(data.book_clubs)
+  $('#show-book-club-list').text(data.book_clubs[0].name)
+  console.log(data.book_clubs)
 }
 
 const getBookClubListFailure = () => {

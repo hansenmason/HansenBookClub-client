@@ -44,6 +44,9 @@ const createBookClub = (bookData) => {
   return $.ajax({
     url: config.apiUrl + '/book_clubs',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
     data: bookData
   })
 }
