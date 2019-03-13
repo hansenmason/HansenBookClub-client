@@ -32,12 +32,16 @@ const changePasswordSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully changed password!')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const changePasswordFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error: Password change failure!')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const signOutSuccess = () => {
@@ -78,6 +82,8 @@ const createBookClubFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error creating book club :(')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const getBookClubListSuccess = (data) => {
@@ -91,13 +97,15 @@ const getBookClubListSuccess = (data) => {
   }
   $('#show-book-club-list').show()
   $('#show-book-club-list').text(finalList)
-  // $('#show-one-book-club').hide()
+  $('#show-one-book-club').hide()
 }
 
 const getBookClubListFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error Getting List :(')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const updateBookClubSuccess = (data) => {
@@ -112,6 +120,8 @@ const updateBookClubFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error Updating Book :(')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const getOneBookClubSuccess = (data) => {
@@ -127,6 +137,8 @@ const getOneBookClubFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error Getting Book :(')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const deleteOneBookClubSuccess = () => {
@@ -141,6 +153,8 @@ const deleteOneBookClubFailure = () => {
   $('#user-message').show()
   $('#user-message').text('Error Deleting Book :(')
   $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 module.exports = {
