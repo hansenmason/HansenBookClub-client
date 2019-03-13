@@ -54,7 +54,7 @@ const signOutSuccess = () => {
   $('#sign-in-form').show()
   $('#sign-up-form').show()
   $('#change-password-form').hide()
-  $('#show-book-club-list').text('')
+  $('#show-one-book-club').hide()
   $('#show-book-club-list').hide()
 }
 
@@ -113,6 +113,7 @@ const updateBookClubSuccess = (data) => {
   $('#user-message').text('Successfully Updated Book Club to: ' + data.book_club.name)
   $('form').trigger('reset')
   $('#show-one-book-club').text(data.book_club.name + ': ' + data.book_club.booklist)
+  $('#show-one-book-club').show()
   $('#show-book-club-list').hide()
 }
 

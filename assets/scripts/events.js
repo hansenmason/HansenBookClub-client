@@ -57,6 +57,7 @@ const onUpdateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
+  console.log(bookClubData)
   let bookId = 0
 
   api.getBookClubList()
