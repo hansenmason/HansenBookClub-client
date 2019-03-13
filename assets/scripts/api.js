@@ -70,9 +70,9 @@ const getBookClubList = () => {
   })
 }
 
-const getOneBookClub = () => {
+const getOneBookClub = (id) => {
   return $.ajax({
-    url: config.apiUrl + '/book_clubs/2',
+    url: config.apiUrl + '/book_clubs/' + id,
     method: 'GET'
   })
 }
