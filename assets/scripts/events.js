@@ -101,6 +101,28 @@ const onGetOneBookClub = (event) => {
     .catch(ui.getBookClubListFailure)
 }
 
+const onDeleteOneBookClub = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const bookClubData = getFormFields(form)
+  let bookId = 0
+
+  api.getBookClubList()
+    .then((data) => {
+      for (let i = 0; i < data.book_clubs.length; i++) {
+        const oneClub = data.book_clubs[i].name
+        if (oneClub === bookClubData.book_club.name) {
+          bookId = data.book_clubs[i].id
+        }
+      }
+      api.deleteOneBookClub(bookId)
+        .then(ui.deleteOneBookClubSuccess)
+        .catch(ui.deleteOneBookClubFailure)
+      console.log(data.book_clubs)
+    })
+    .catch(ui.deleteBookClubListFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -109,5 +131,6 @@ module.exports = {
   onCreateBookClub,
   onUpdateBookClub,
   onGetBookClubList,
-  onGetOneBookClub
+  onGetOneBookClub,
+  onDeleteOneBookClub
 }

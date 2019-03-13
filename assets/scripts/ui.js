@@ -116,6 +116,18 @@ const getOneBookClubFailure = () => {
   $('form').trigger('reset')
 }
 
+const deleteOneBookClubSuccess = () => {
+  $('#user-message').show()
+  $('#user-message').text('Successfully Deleted Book Club!')
+  $('form').trigger('reset')
+}
+
+const deleteOneBookClubFailure = () => {
+  $('#user-message').show()
+  $('#user-message').text('Error Deleting Book :(')
+  $('form').trigger('reset')
+}
+
 module.exports = {
   signUpSuccess,
   signUpFailure,
@@ -133,5 +145,7 @@ module.exports = {
   updateBookClubSuccess,
   updateBookClubFailure,
   getOneBookClubSuccess,
-  getOneBookClubFailure
+  getOneBookClubFailure,
+  deleteOneBookClubSuccess,
+  deleteOneBookClubFailure
 }

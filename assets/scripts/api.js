@@ -77,6 +77,16 @@ const getOneBookClub = (id) => {
   })
 }
 
+const deleteOneBookClub = (id) => {
+  return $.ajax({
+    url: config.apiUrl + '/book_clubs/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -85,5 +95,6 @@ module.exports = {
   createBookClub,
   updateBookClub,
   getBookClubList,
-  getOneBookClub
+  getOneBookClub,
+  deleteOneBookClub
 }
