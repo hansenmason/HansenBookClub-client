@@ -52,9 +52,9 @@ const createBookClub = (bookData) => {
   })
 }
 
-const updateBookClub = (bookData) => {
+const updateBookClub = (bookData, id) => {
   return $.ajax({
-    url: config.apiUrl + '/book_clubs/' + store.bookClubId,
+    url: config.apiUrl + '/book_clubs/' + id,
     method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token

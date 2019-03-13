@@ -54,10 +54,22 @@ const onUpdateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
+  let bookId = 0
 
-  api.updateBookClub(bookClubData)
-    .then(ui.updateBookClubSuccess)
-    .catch(ui.updateBookClubFailure)
+  api.getBookClubList()
+    .then((data) => {
+      for (let i = 0; i < data.book_clubs.length; i++) {
+        const oneClub = data.book_clubs[i].name
+        if (oneClub === bookClubData.book_club.old_name) {
+          bookId = data.book_clubs[i].id
+        }
+      }
+      api.updateBookClub(bookClubData, bookId)
+        .then(ui.updateBookClubSuccess)
+        .catch(ui.updateBookClubFailure)
+      console.log(data.book_clubs)
+    })
+    .catch(ui.getBookClubListFailure)
 }
 
 const onGetBookClubList = (event) => {

@@ -88,6 +88,20 @@ const getBookClubListFailure = () => {
   $('form').trigger('reset')
 }
 
+const updateBookClubSuccess = (data) => {
+  $('#user-message').show()
+  $('#user-message').text('Successfully Updated Book Club!')
+  $('form').trigger('reset')
+  $('#show-one-book-club').text(data.book_club.name)
+  console.log(data)
+}
+
+const updateBookClubFailure = () => {
+  $('#user-message').show()
+  $('#user-message').text('Error Updating Book :(')
+  $('form').trigger('reset')
+}
+
 const getOneBookClubSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved Book Club!')
@@ -116,6 +130,8 @@ module.exports = {
   createBookClubFailure,
   getBookClubListSuccess,
   getBookClubListFailure,
+  updateBookClubSuccess,
+  updateBookClubFailure,
   getOneBookClubSuccess,
   getOneBookClubFailure
 }
