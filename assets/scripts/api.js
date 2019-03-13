@@ -40,10 +40,22 @@ const signOut = () => {
 }
 
 const createBookClub = (bookData) => {
+  console.log(store)
   console.log(bookData)
   return $.ajax({
     url: config.apiUrl + '/book_clubs',
     method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: bookData
+  })
+}
+
+const updateBookClub = (bookData) => {
+  return $.ajax({
+    url: config.apiUrl + '/book_clubs/' + store.bookClubId,
+    method: 'PATCH',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
@@ -58,11 +70,20 @@ const getBookClubList = () => {
   })
 }
 
+const getOneBookClub = () => {
+  return $.ajax({
+    url: config.apiUrl + '/book_clubs/2',
+    method: 'GET'
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
   createBookClub,
-  getBookClubList
+  updateBookClub,
+  getBookClubList,
+  getOneBookClub
 }

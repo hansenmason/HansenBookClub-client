@@ -58,6 +58,7 @@ const createBookClubSuccess = (responseData) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Created Book Club!')
   $('form').trigger('reset')
+  store.bookClubId = responseData.book_club.id
   console.log(responseData)
 }
 
@@ -71,7 +72,7 @@ const getBookClubListSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved List of Book Clubs!')
   $('form').trigger('reset')
-  // $('#show-book-club-list').text(data.book_clubs[7].author)
+  // $('#show-book-club-list').text(data.book_clubs[18].booklist)
   const finalList = []
   for (let i = 0; i < data.book_clubs.length; i++) {
     const oneClub = data.book_clubs[i].name
@@ -83,7 +84,21 @@ const getBookClubListSuccess = (data) => {
 
 const getBookClubListFailure = () => {
   $('#user-message').show()
-  $('#user-message').text('Error getting list :(')
+  $('#user-message').text('Error Getting List :(')
+  $('form').trigger('reset')
+}
+
+const getOneBookClubSuccess = (data) => {
+  $('#user-message').show()
+  $('#user-message').text('Successfully Retrieved Book Club!')
+  $('form').trigger('reset')
+  $('#show-one-book-club').text(data.book_club.name)
+  console.log(data)
+}
+
+const getOneBookClubFailure = () => {
+  $('#user-message').show()
+  $('#user-message').text('Error Getting Book :(')
   $('form').trigger('reset')
 }
 
@@ -100,5 +115,7 @@ module.exports = {
   createBookClubSuccess,
   createBookClubFailure,
   getBookClubListSuccess,
-  getBookClubListFailure
+  getBookClubListFailure,
+  getOneBookClubSuccess,
+  getOneBookClubFailure
 }

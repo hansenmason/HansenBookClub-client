@@ -44,10 +44,20 @@ const onCreateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
-
+  console.log(bookClubData)
   api.createBookClub(bookClubData)
     .then(ui.createBookClubSuccess)
     .catch(ui.createBookClubFailure)
+}
+
+const onUpdateBookClub = (event) => {
+  event.preventDefault()
+  const form = event.target
+  const bookClubData = getFormFields(form)
+
+  api.updateBookClub(bookClubData)
+    .then(ui.updateBookClubSuccess)
+    .catch(ui.updateBookClubFailure)
 }
 
 const onGetBookClubList = (event) => {
@@ -57,11 +67,20 @@ const onGetBookClubList = (event) => {
     .catch(ui.getBookClubListFailure)
 }
 
+const onGetOneBookClub = (event) => {
+  event.preventDefault()
+  api.getOneBookClub()
+    .then(ui.getOneBookClubSuccess)
+    .catch(ui.getOneBookClubFailure)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
   onChangePassword,
   onCreateBookClub,
-  onGetBookClubList
+  onUpdateBookClub,
+  onGetBookClubList,
+  onGetOneBookClub
 }

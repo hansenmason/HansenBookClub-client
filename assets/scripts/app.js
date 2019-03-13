@@ -12,5 +12,7 @@ $(() => {
   $('#sign-out-form').on('submit', events.onSignOut)
   $('#change-password-form').on('submit', events.onChangePassword)
   $('#create-book-club-form').on('submit', events.onCreateBookClub)
+  $('#update-book-club-form').on('submit', events.onUpdateBookClub)
   $('#get-book-club-list-form').on('submit', events.onGetBookClubList)
+  $('#get-one-book-club-form').on('submit', events.onGetOneBookClub)
 })
