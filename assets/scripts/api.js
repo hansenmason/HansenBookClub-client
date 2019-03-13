@@ -40,8 +40,6 @@ const signOut = () => {
 }
 
 const createBookClub = (bookData) => {
-  console.log(store)
-  console.log(bookData)
   return $.ajax({
     url: config.apiUrl + '/book_clubs',
     method: 'POST',

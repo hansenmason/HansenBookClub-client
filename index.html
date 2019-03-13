@@ -37,25 +37,25 @@
           <input type="submit" value="Sign Out">
         </form>
         <p>
-          <form id="create-book-club-form">
+          <form class="book-forms" id="get-book-club-list-form">
+            <input type="submit" value="Get Book Clubs List">
+          </form>
+          <form class="book-forms" id="get-one-book-club-form">
+            <input name="book_club[name]" type="text" placeholder="Book Club Name">
+            <input type="submit" value="Get Book Club">
+          </form>
+          <form class="book-forms" id="create-book-club-form">
             <input name="book_club[name]" type="text" placeholder="Book Club Name">
             <input name="book_club[booklist]" type="text" placeholder="Book Club Book List">
             <input type="submit" value="Create New Book Club">
           </form>
-          <form id="update-book-club-form">
+          <form class="book-forms" id="update-book-club-form">
             <input name="book_club[old_name]" type="text" placeholder="Old Book Club Name">
             <input name="book_club[name]" type="text" placeholder="New Book Club Name">
             <input name="book_club[booklist]" type="text" placeholder="New Book List">
             <input type="submit" value="Update Existing Book Club">
           </form>
-          <form id="get-book-club-list-form">
-            <input type="submit" value="Get Book Clubs List">
-          </form>
-          <form id="get-one-book-club-form">
-            <input name="book_club[name]" type="text" placeholder="Book Club Name">
-            <input type="submit" value="Get Book Club">
-          </form>
-          <form id="delete-one-book-club-form">
+          <form class="book-forms" id="delete-one-book-club-form">
             <input name="book_club[name]" type="text" placeholder="Book Club Name">
             <input type="submit" value="Delete Book Club">
           </form>

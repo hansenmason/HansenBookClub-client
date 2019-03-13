@@ -2,44 +2,56 @@
 const store = require('./store.js')
 
 const signUpSuccess = () => {
-  $('#user-message').text('Successfully signed up')
+  $('#user-message').text('Successfully signed up!')
   $('form').trigger('reset')
 }
 
 const signUpFailure = () => {
-  $('#user-message').text('Error on sign up')
+  $('#user-message').text('Error on sign up :(')
   $('form').trigger('reset')
 }
 
 const signInSuccess = (responseData) => {
-  $('#user-message').text('Successfully signed in')
+  $('#user-message').text('Successfully signed in!')
   store.user = responseData.user
   $('form').trigger('reset')
+  $('.book-forms').show()
+  $('#sign-out-form').show()
+  $('#change-password-form').show()
+  $('#sign-in-form').hide()
+  $('#sign-up-form').hide()
 }
 
 const signInFailure = () => {
   $('#user-message').show()
-  $('#user-message').text('Error on sign in')
+  $('#user-message').text('Error on sign in :(')
   $('form').trigger('reset')
 }
 
 const changePasswordSuccess = () => {
   $('#user-message').show()
-  $('#user-message').text('Successfully changed password')
+  $('#user-message').text('Successfully changed password!')
   $('form').trigger('reset')
 }
 
 const changePasswordFailure = () => {
   $('#user-message').show()
-  $('#user-message').text('Error: Password change failure')
+  $('#user-message').text('Error: Password change failure!')
   $('form').trigger('reset')
 }
 
 const signOutSuccess = () => {
   $('#user-message').show()
-  $('#user-message').text('Successfully signed out')
+  $('#user-message').text('Successfully signed out!')
   $('form').trigger('reset')
   store.user = null
+  $('.book-forms').hide()
+  $('#sign-out-form').hide()
+  $('#sign-in-form').show()
+  $('#sign-up-form').show()
+  $('#change-password-form').hide()
+  $('#show-book-club-list').text('')
+  $('#show-book-club-list').hide()
 }
 
 const signOutFailure = () => {
@@ -54,12 +66,12 @@ const failure = () => {
   $('form').trigger('reset')
 }
 
-const createBookClubSuccess = (responseData) => {
+const createBookClubSuccess = (data) => {
   $('#user-message').show()
-  $('#user-message').text('Successfully Created Book Club!')
+  $('#user-message').text('Successfully Created Book Club: ' + data.book_club.name)
   $('form').trigger('reset')
-  store.bookClubId = responseData.book_club.id
-  console.log(responseData)
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
 }
 
 const createBookClubFailure = () => {
@@ -72,14 +84,14 @@ const getBookClubListSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved List of Book Clubs!')
   $('form').trigger('reset')
-  // $('#show-book-club-list').text(data.book_clubs[18].booklist)
   const finalList = []
   for (let i = 0; i < data.book_clubs.length; i++) {
     const oneClub = data.book_clubs[i].name
     finalList.push(' ' + oneClub)
   }
+  $('#show-book-club-list').show()
   $('#show-book-club-list').text(finalList)
-  console.log(data.book_clubs)
+  // $('#show-one-book-club').hide()
 }
 
 const getBookClubListFailure = () => {
@@ -90,10 +102,10 @@ const getBookClubListFailure = () => {
 
 const updateBookClubSuccess = (data) => {
   $('#user-message').show()
-  $('#user-message').text('Successfully Updated Book Club!')
+  $('#user-message').text('Successfully Updated Book Club to: ' + data.book_club.name)
   $('form').trigger('reset')
-  $('#show-one-book-club').text(data.book_club.name)
-  console.log(data)
+  $('#show-one-book-club').text(data.book_club.name + ': ' + data.book_club.booklist)
+  $('#show-book-club-list').hide()
 }
 
 const updateBookClubFailure = () => {
@@ -106,8 +118,9 @@ const getOneBookClubSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved Book Club!')
   $('form').trigger('reset')
-  $('#show-one-book-club').text(data.book_club.name)
-  console.log(data)
+  $('#show-one-book-club').show()
+  $('#show-one-book-club').text(data.book_club.name + ': ' + data.book_club.booklist)
+  $('#show-book-club-list').hide()
 }
 
 const getOneBookClubFailure = () => {
@@ -120,6 +133,8 @@ const deleteOneBookClubSuccess = () => {
   $('#user-message').show()
   $('#user-message').text('Successfully Deleted Book Club!')
   $('form').trigger('reset')
+  $('#show-book-club-list').hide()
+  $('#show-one-book-club').hide()
 }
 
 const deleteOneBookClubFailure = () => {

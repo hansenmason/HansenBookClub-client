@@ -3,6 +3,10 @@ const getFormFields = require('../../lib/get-form-fields.js')
 const api = require('./api.js')
 const ui = require('./ui.js')
 
+$('.book-forms').hide()
+$('#sign-out-form').hide()
+$('#change-password-form').hide()
+
 const onSignUp = (event) => {
   event.preventDefault()
   const form = event.target
@@ -44,7 +48,6 @@ const onCreateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
-  console.log(bookClubData)
   api.createBookClub(bookClubData)
     .then(ui.createBookClubSuccess)
     .catch(ui.createBookClubFailure)
@@ -67,7 +70,6 @@ const onUpdateBookClub = (event) => {
       api.updateBookClub(bookClubData, bookId)
         .then(ui.updateBookClubSuccess)
         .catch(ui.updateBookClubFailure)
-      console.log(data.book_clubs)
     })
     .catch(ui.getBookClubListFailure)
 }
@@ -96,7 +98,6 @@ const onGetOneBookClub = (event) => {
       api.getOneBookClub(bookId)
         .then(ui.getOneBookClubSuccess)
         .catch(ui.getOneBookClubFailure)
-      console.log(data.book_clubs)
     })
     .catch(ui.getBookClubListFailure)
 }
@@ -118,7 +119,6 @@ const onDeleteOneBookClub = (event) => {
       api.deleteOneBookClub(bookId)
         .then(ui.deleteOneBookClubSuccess)
         .catch(ui.deleteOneBookClubFailure)
-      console.log(data.book_clubs)
     })
     .catch(ui.deleteBookClubListFailure)
 }
