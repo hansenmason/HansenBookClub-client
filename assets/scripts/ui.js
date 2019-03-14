@@ -86,6 +86,14 @@ const createBookClubFailure = () => {
   $('#show-book-club-list').hide()
 }
 
+const bookClubExistsFailure = () => {
+  $('#user-message').show()
+  $('#user-message').text('Error: A Book Club With That Name Already Exists!')
+  $('form').trigger('reset')
+  $('#show-one-book-club').hide()
+  $('#show-book-club-list').hide()
+}
+
 const getBookClubListSuccess = (data) => {
   $('#user-message').show()
   $('#user-message').text('Successfully Retrieved List of Book Clubs!')
@@ -96,7 +104,7 @@ const getBookClubListSuccess = (data) => {
     finalList.push(' ' + oneClub)
   }
   $('#show-book-club-list').show()
-  $('#show-book-club-list').text(finalList)
+  $('#show-book-club-list').text(finalList.sort())
   $('#show-one-book-club').hide()
 }
 
@@ -170,6 +178,7 @@ module.exports = {
   changePasswordFailure,
   createBookClubSuccess,
   createBookClubFailure,
+  bookClubExistsFailure,
   getBookClubListSuccess,
   getBookClubListFailure,
   updateBookClubSuccess,

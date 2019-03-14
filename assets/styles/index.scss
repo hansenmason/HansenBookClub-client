@@ -1,1 +1,29 @@
 @import '~bootstrap/scss/bootstrap';
+
+body {
+  background-color: #708090;
+}
+
+h1 {
+  border: 2px solid black;
+  text-align: center;
+}
+
+.button {
+  background-color: #F08080;
+}
+
+#user-message {
+  color: #FFF8DC;
+  font-weight: bold;
+}
+
+#show-book-club-list {
+  color: #191970;
+  font-weight: bold;
+}
+
+#show-one-book-club {
+  color: #90EE90;
+  font-weight: bold;
+}

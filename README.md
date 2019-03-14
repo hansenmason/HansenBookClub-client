@@ -1,130 +1,68 @@
-[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+I used the following technologies:
+html, css, javascript, jquery, ajax, rails, ruby
 
-# browser-template
+Link to Back-end Repo: https://github.com/hansenmason/HansenBookClub-rails-api
 
-A template for starting front-end projects. Webpack for `require` system, build
-pipeline, and development server. Boostrap and Handlebars.js included. No
-front-end frameworks included.
+Planning and Development Process:
+I planned to do the signin/up/out and password features first for both front-end
+and back end. From there, I wanted to focus on back-end features, such as
+setting up a relationship to user with book clubs. I planned to set up a book club
+table, and add users to it through migration. From there, I wanted to ensure private
+settings for data such as update or destroy, but allowing any one to see any of the
+listings of book clubs, the whole list as well as any individual book club. Once
+my back-end was set up, I planned to work the front-end starting with form fields,
+and then working on events, api, and ui all together for each of the button
+requests of get(all/singular), create, update, and delete. Once I had all the forms
+set up, and linked to the back-end, I planned on working on the css. Initially I
+had planned to link books and their authors into relationships with book clubs,
+but with the time I had, that was going to be a stretch goal. Instead my more realistic
+plan became having the book listings within the book clubs as text, that are not
+linked in the back-end, but are all part of the same book_club data, as a NAME
+of book club and a BOOKLIST of books, as a text field. Once I had finished all of that,
+I planned to add finishing touches of form field formatting (unable to just create
+book without input into name, and other such tweaks). I was able to execute
+all of steps, with certain steps taking a lot longer, especially at the beginning.
+I had a lot of issues with the back-end, in terms of understanding how things
+were private/accessable, token auth, etc. I also had a problem figure out how to
+show booklist, even though I had added it to my book club table. I problem solved
+this through previous lectures/trainings, as well as google, which also helped me understand
+private settings. As for the front-end, my biggest problems were in the beginnging,
+after my user features were set up. I had no problem getting all books, but updating
+and getting by book (and thus deleting by id) were hard to figure out. After much
+console logging, I understand how the processes of api requests and response data
+were executing, and decided to api request all books on a get book club/update book club/detele book club request, and then cycle through all book clubs to find the specific one
+if the name matches, and then use that as the book club id for the api request.
+In the end, console log was my most utilized problem solving strategy, as well
+as google for any functions I wanted/needed. I was able to use the same get book club
+strategy to implement a functionality where you cannot create a book club if
+a book club with that name already exists.
 
-## Installation
+Unsolved Problems:
+My unsolved problems include mostly css(not using handlebars), as well as form
+field inputs. A user must include an input into the form fields for book clubs,
+but a space does suffice, and I wanted to have it include at least one of characters,
+numbers, etc. In the future I hope to fix this, and make it so users cannot
+just make a book club with 85 spaces in it, just for aesthetic and practical
+purposes. As for the css, since my book club list is just an array, as well
+as my booklists are just texts, it is difficult to display them in any other way
+then just a list on the page. In the future I hope to make the book club/booklist
+displays more aesthetically pleasing. And as you can see from the ERD link shown
+in the back-end repo, I was unable to make books and authors as their own columns/tables with
+relationships to book clubs/users. In future iterations I hope to successfully
+achieve this, rather than having the booklist just a text field.
 
-1. [Download](../../archive/master.zip) this template.
-    - **Do Not Fork And Clone**
-    - Click the "Clone or Download" button and select "Download Zip".
-1. Move to the `wdi/projects` directory, then unzip the template directory with
-    `unzip /Users/<user-name>/Downloads/browser-template-master.zip`.
-1. Rename the template directory from `browser-template-master` to
-    `<project-name>-client`.
-1. Empty [`README.md`](README.md) and fill with your own content.
-1. Replace all instances of `HansenBookClub` with the name of
-    your project.
-    - You can search for all instances of text in Atom by pressing
-    `commant + shift + f` on Mac or `ctrl + shift + f` on WSL.
-1. Move into the new project and `git init`.
-1. Add all of the files in your project with the command `git add --all`.
-      - **Note: This is the only time you should run this command!**
-1. Commit all of your files with the command `git commit`.
-      - Your commit title should read `Initial commit`.
-1. Install dependencies with `npm install`.
-1. Create a new repository on [github.com](https://github.com),
-    _not GitHub Enterprise_.
-1. Name the new repository with the same name used on Step 3.
-1. Follow the instructions on your new repository's setup page. For details on
-   how to push to Github, refer to the section on Github entitled "…or push an existing
-   repository from the command line." Further documentation can be found [here](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line/).
-
-## Structure
-
-### Scripts
-
-Developers should store JavaScript files in [`assets/scripts`](assets/scripts).
-The "manifest" or entry-point is
-[`assets/scripts/app.js`](assets/scripts/app.js). In general, only
-application initialization goes in this file. It's normal for developers to
-start putting all code in this file, but encourage them to break out different
-responsibilities and use the `require` syntax put references where they're
-needed.
-
-### Config
-
-Developers should set `apiUrls.production` and `apiUrls.development` in
-[`assets/scripts/config.js`](assets/scripts/config.js).  With
-`apiUrls` set, developers may rely on `apiUrl` as the base for API
-URLs.
-
-### Styles
-
-Developers should store styles in [`assets/styles`](assets/styles) and load them
-from [`assets/styles/index.scss`](assets/styles/index.scss). Bootstrap version 3 is
-included in this template.
-
-### Forms and Using `getFormFields`
-
-Developers should use [getFormFields](get-form-fields.md) to retrieve form data
-to send to an API.
-
-### Deployment
-
-To deploy a browser-template based SPA, run `grunt deploy`.
-
-## Adding Images
-
-To add images to your project, you must store them in the `public` directory.
-To use the image in HTML or CSS, write the path to the image like this:
-
-```html
-<img src="public/cat.jpg">
-```
-or
-```css
-#my-cool-div {
-  background-image: url('public/cat.jpg')
-}
+User Stories:
+```md
+As a user, I want to be able to sign up an account.
+As a user, I want to be able to sign in and sign out of an account.
+As a logged in user, I want to the option to change my password.
+As a user, I want to be able to view a list of different book clubs.
+As a user, I want to be able to enter each book club section and view their list of books.
+As a logged in user, I want to be able to create my own book club library.
+As a logged in user, I want to be able to edit my own book club library.
+As a logged in user, I don't want to be able to have any unauthorized user editing my library.
 ```
 
-Note that there's no `./` or `/` in front of `public/filename.jpg`.
-
-## Adding Fonts
-
-To add custom fonts to your app, you can either use a CDN like Google Fonts, or
-you can download the fonts and save them in the `public` directory. If you use
-the former method, follow the directions on the website providing the fonts.
-
-For local fonts, put the files in `public`, and then import and use them in a
-`.scss` file like this:
-
-```scss
-@font-face {
-  font-family: 'Nature Beauty';
-  src: url('public/Nature-Beauty.ttf') format('truetype');
-}
-
-.element-with-custom-font {
-  font-family: 'Nature Beauty';
-}
-```
-
-## Tasks
-
-Developers should run these often!
-
-- `grunt nag` or just `grunt`: runs code quality analysis tools on your code
-    and complains
-- `grunt make-standard`: reformats all your code in the JavaScript Standard Style
-- `grunt <server|serve|s>`: generates bundles, watches, and livereloads
-- `grunt build`: place bundled styles and scripts where `index.html` can find
-    them
-- `grunt deploy`: builds and deploys master branch
 
 
-## Additional Resources
-
-- [Modern Javascript Explained for Dinosaurs](https://medium.com/@peterxjang/modern-javascript-explained-for-dinosaurs-f695e9747b70)
-- [Making Sense of Front End Build Tools](https://medium.freecodecamp.org/making-sense-of-front-end-build-tools-3a1b3a87043b)
-
-## [License](LICENSE)
-
-1. All content is licensed under a CC­BY­NC­SA 4.0 license.
-1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
-# HansenBookClub-client
+Link to wireframe: https://imgur.com/tRvVdrI

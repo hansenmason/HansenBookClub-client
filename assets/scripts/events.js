@@ -7,6 +7,11 @@ $('.book-forms').hide()
 $('#sign-out-form').hide()
 $('#change-password-form').hide()
 
+const input = document.getElementById('get-one-book-club-form')
+input.oninvalid = function (event) {
+  event.target.setCustomValidity('Book Club Should Start With A Letter or Number')
+}
+
 const onSignUp = (event) => {
   event.preventDefault()
   const form = event.target
@@ -48,23 +53,37 @@ const onCreateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
-  api.createBookClub(bookClubData)
-    .then(ui.createBookClubSuccess)
-    .catch(ui.createBookClubFailure)
+
+  api.getBookClubList()
+    .then((data) => {
+      let stop = true
+      for (let i = 0; i < data.book_clubs.length; i++) {
+        const oneClub = data.book_clubs[i].name
+        if (oneClub.toLowerCase() === bookClubData.book_club.name.toLowerCase()) {
+          stop = false
+        }
+      }
+      if (stop === true) {
+        api.createBookClub(bookClubData)
+          .then(ui.createBookClubSuccess)
+          .catch(ui.createBookClubFailure)
+      } else {
+        ui.bookClubExistsFailure()
+      }
+    })
 }
 
 const onUpdateBookClub = (event) => {
   event.preventDefault()
   const form = event.target
   const bookClubData = getFormFields(form)
-  console.log(bookClubData)
   let bookId = 0
 
   api.getBookClubList()
     .then((data) => {
       for (let i = 0; i < data.book_clubs.length; i++) {
         const oneClub = data.book_clubs[i].name
-        if (oneClub === bookClubData.book_club.old_name) {
+        if (oneClub.toLowerCase() === bookClubData.book_club.old_name.toLowerCase()) {
           bookId = data.book_clubs[i].id
         }
       }
@@ -92,7 +111,7 @@ const onGetOneBookClub = (event) => {
     .then((data) => {
       for (let i = 0; i < data.book_clubs.length; i++) {
         const oneClub = data.book_clubs[i].name
-        if (oneClub === bookClubData.book_club.name) {
+        if (oneClub.toLowerCase() === bookClubData.book_club.name.toLowerCase()) {
           bookId = data.book_clubs[i].id
         }
       }
@@ -113,7 +132,7 @@ const onDeleteOneBookClub = (event) => {
     .then((data) => {
       for (let i = 0; i < data.book_clubs.length; i++) {
         const oneClub = data.book_clubs[i].name
-        if (oneClub === bookClubData.book_club.name) {
+        if (oneClub.toLowerCase() === bookClubData.book_club.name.toLowerCase()) {
           bookId = data.book_clubs[i].id
         }
       }
