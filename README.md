@@ -2,6 +2,25 @@ I used the following technologies:
 html, css, javascript, jquery, ajax, rails, ruby
 
 Link to Back-end Repo: https://github.com/hansenmason/HansenBookClub-rails-api
+Link to Back-end site: https://hansenbookclub.herokuapp.com/
+Link to Front-end site: https://hansenmason.github.io/HansenBookClub-client/
+
+What my app does and how it works:
+
+My app is a database of book clubs. A user, onced signed-up/signed-in, can
+create their own book club, with a list of books, that they can store in the database.
+The book club created will show up when a user attempts to show all book clubs,
+along with every other book club that has been created by any user. A user can
+also search for a book club by name, and once retrieved, will show the book list
+for that book club. The list is intended to have books recommended by the book club,
+or any want to reads, or kind of anything they want to talk about within the book club.
+Notes or any other text may be added, like you should really read this book because
+etc. A user can update an existing book club, either renaming and recreating a new
+book list, but can only update, as well as delete, book clubs that they have created
+themself. All buttons, showing book club list, creating a book club, showing a
+particular book club and it's book list, and deleting a book club, interact with
+the api to CRUD particular to their representative buttons, and generates the
+appropriate output that the user sees.
 
 Planning and Development Process:
 I planned to do the signin/up/out and password features first for both front-end
