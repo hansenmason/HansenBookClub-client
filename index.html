@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Book Clubs</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+      <h1>Book Clubs!</h1>
+      <p id="user-message"></p>
+        <form id="sign-up-form">
+          <input name="credentials[email]" type="email" placeholder="email">
+          <input name="credentials[password]" type="password" placeholder="password">
+          <input name="credentials[password_confirmation]" type="password" placeholder="password confirmation">
+          <input type="submit" value="Sign Up" class="button">
+        </form>
+
+        <form id="sign-in-form">
+          <input name="credentials[email]" type="email" placeholder="email">
+          <input name="credentials[password]" type="password" placeholder="password">
+          <input type="submit" value="Sign In" class="button">
+        </form>
+
+        <form id="change-password-form">
+          <input name="passwords[old]" type="password" placeholder="old password">
+          <input name="passwords[new]" type="password" placeholder="new password">
+          <input type="submit" value="Change Password" class="button">
+        </form>
+
+        <form id="sign-out-form">
+          <input type="submit" value="Sign Out" class="button">
+        </form>
+        <p>
+          <form class="book-forms" id="get-book-club-list-form">
+            <input type="submit" value="Get Book Clubs List" class="button">
+          </form>
+          <form class="book-forms" id="get-one-book-club-form">
+            <input name="book_club[name]" required type="text" placeholder="Book Club Name">
+            <input type="submit" value="Show Book Club Books" class="button">
+          </form>
+          <form class="book-forms" id="create-book-club-form">
+            <input name="book_club[name]" required type="text" placeholder="Book Club Name">
+            <input name="book_club[booklist]" type="text" placeholder="Book Club Book List">
+            <input type="submit" value="Create New Book Club" class="button">
+          </form>
+          <form class="book-forms" id="update-book-club-form">
+            <input name="book_club[old_name]" required type="text" placeholder="Old Book Club Name">
+            <input name="book_club[name]" required type="text" placeholder="New Book Club Name">
+            <input name="book_club[booklist]" type="text" placeholder="New Book List">
+            <input type="submit" value="Update Existing Book Club" class="button">
+          </form>
+          <form class="book-forms" id="delete-one-book-club-form">
+            <input name="book_club[name]" required type="text" placeholder="Book Club Name">
+            <input type="submit" value="Delete Book Club" class="button">
+          </form>
+        </p>
+        <p id="show-book-club-list"></p>
+        <p id="show-one-book-club"></p>
+    </body>
+</html>
